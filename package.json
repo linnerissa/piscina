@@ -17,7 +17,7 @@
     "lint": "eslint && tsc --noEmit && tsc --project test/tsconfig.json --noEmit",
     "test": "node scripts/run-tests.js --pattern='test/**/*test.ts'",
     "test:jest": "jest --config test/jest/jest.config.js",
-    "test:ci": "npm run build && npm run lint && npm run test:coverage",
+    "test:ci": "npm run build && npm run lint && npm run test:coverage && npm run test:jest",
     "test:coverage": "node scripts/run-tests.js --coverage --pattern='test/**/*test.ts'",
     "prepack": "npm run build",
     "benchmark": "node --allow-natives-syntax benchmark/index.js --scope all",
