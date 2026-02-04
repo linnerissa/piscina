@@ -37,7 +37,7 @@ const pattern = values.pattern;
 const isCoverage = values.coverage;
 const runOnly = values.only;
 
-const testFiles = globSync(pattern, { absolute: true });
+const testFiles = globSync(pattern, { absolute: true, ignore: ['**/jest/**'] });
 
 const args = [
   '--enable-source-maps',
