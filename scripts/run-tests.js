@@ -5,6 +5,7 @@
 // resolve the test files and pass them to the test runner
 
 const { spawnSync } = require('node:child_process')
+const { resolve } = require('node:path');
 const { parseArgs } = require('node:util')
 const { availableParallelism } = require('node:os')
 const { globSync } = require('glob')
@@ -64,7 +65,9 @@ log('Running tests with options:', {
   verbose
 })
 
-const testFiles = globSync(pattern, { absolute: true, ignore: ['**/jest/**'] });
+const jestDir = resolve('test/jest');
+const testFiles = globSync(pattern, { absolute: true })
+  .filter(f => !f.startsWith(jestDir));
 
 log(`Found ${testFiles.length} test files to run:`)
 const args = [
